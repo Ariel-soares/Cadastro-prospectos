@@ -34,6 +34,9 @@ import com.google.gson.Gson;
 
 import entities.Prospecto;
 import entities.Servico;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Form extends JFrame {
 
@@ -55,6 +58,7 @@ public class Form extends JFrame {
 					frame.setTitle("Cadastro de prospectos");
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,57 +70,82 @@ public class Form extends JFrame {
 	 * Create the frame.
 	 */
 	public Form() {
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 864, 611);
+		setBounds(100, 100, 1034, 586);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(49, 62, 64));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("X");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		lblNewLabel_3.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		lblNewLabel_3.setBackground(new Color(255, 255, 255));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setForeground(new Color(76, 41, 211));
+		lblNewLabel_3.setBounds(978, 0, 56, 50);
+		contentPane.add(lblNewLabel_3);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(34, 11, 775, 228);
+		panel.setBackground(new Color(76, 41, 211));
+		panel.setBounds(0, 0, 326, 586);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Formulário de requisição");
-		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 19));
-		lblNewLabel.setBounds(242, 11, 258, 31);
+		lblNewLabel.setForeground(new Color(204,204,204));
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 19));
+		lblNewLabel.setBounds(45, 30, 243, 31);
 		panel.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Caminho do arquivo:");
-		lblNewLabel_1.setFont(new Font("Segoe UI", Font.BOLD, 17));
-		lblNewLabel_1.setBounds(42, 53, 188, 14);
+		lblNewLabel_1.setForeground(new Color(204, 204, 204));
+		lblNewLabel_1.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+		lblNewLabel_1.setBounds(28, 92, 188, 14);
 		panel.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Token de acesso:");
-		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.BOLD, 17));
-		lblNewLabel_1_1.setBounds(42, 93, 188, 14);
+		lblNewLabel_1_1.setForeground(new Color(204, 204, 204));
+		lblNewLabel_1_1.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+		lblNewLabel_1_1.setBounds(28, 177, 188, 14);
 		panel.add(lblNewLabel_1_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Link do servidor");
-		lblNewLabel_2.setFont(new Font("Segoe UI", Font.BOLD, 17));
-		lblNewLabel_2.setBounds(42, 137, 188, 14);
+		lblNewLabel_2.setForeground(new Color(204, 204, 204));
+		lblNewLabel_2.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+		lblNewLabel_2.setBounds(28, 272, 188, 14);
 		panel.add(lblNewLabel_2);
 
 		textFieldCaminho = new JTextField();
-		textFieldCaminho.setBounds(240, 53, 404, 20);
+		textFieldCaminho.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		textFieldCaminho.setBounds(28, 130, 188, 20);
 		panel.add(textFieldCaminho);
 		textFieldCaminho.setColumns(10);
 
 		caminhoToken = new JTextField();
-		caminhoToken.setBounds(240, 90, 404, 20);
+		caminhoToken.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		caminhoToken.setBounds(28, 211, 258, 20);
 		panel.add(caminhoToken);
 		caminhoToken.setColumns(10);
 
 		textFieldEndereco = new JTextField();
-		textFieldEndereco.setBounds(240, 134, 404, 20);
+		textFieldEndereco.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		textFieldEndereco.setBounds(28, 307, 258, 20);
 		panel.add(textFieldEndereco);
 		textFieldEndereco.setColumns(10);
 
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(34, 250, 775, 311);
+		textArea.setBackground(new Color(230, 230, 230));
+		textArea.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		textArea.setBounds(326, 44, 708, 542);
 		contentPane.add(textArea);
 
 		JButton btnNewButton = new JButton("Enviar");
@@ -204,8 +233,8 @@ public class Form extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setFont(new Font("Segoe UI", Font.BOLD, 17));
-		btnNewButton.setBounds(321, 194, 89, 23);
+		btnNewButton.setFont(new Font("Century Gothic", Font.BOLD, 17));
+		btnNewButton.setBounds(127, 387, 89, 23);
 		panel.add(btnNewButton);
 
 		JButton procurar = new JButton("Procurar");
@@ -221,8 +250,8 @@ public class Form extends JFrame {
 			}
 		});
 
-		procurar.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		procurar.setBounds(676, 51, 89, 23);
+		procurar.setFont(new Font("Century Gothic", Font.BOLD, 13));
+		procurar.setBounds(227, 130, 89, 23);
 		panel.add(procurar);
 
 	}
