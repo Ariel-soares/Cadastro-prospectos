@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,6 +22,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -28,15 +31,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.google.gson.Gson;
 
 import entities.Prospecto;
 import entities.Servico;
-import javax.swing.SwingConstants;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class Form extends JFrame {
 
@@ -74,25 +75,26 @@ public class Form extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1034, 586);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBackground(new Color(50, 27, 140));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("X");
-		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+		JLabel lblXClose = new JLabel("");
+		lblXClose.setIcon(new ImageIcon(Form.class.getResource("/imagens/icons8-x-50.png")));
+		lblXClose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.exit(0);
 			}
 		});
-		lblNewLabel_3.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-		lblNewLabel_3.setBackground(new Color(255, 255, 255));
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setForeground(new Color(76, 41, 211));
-		lblNewLabel_3.setBounds(978, 0, 56, 50);
-		contentPane.add(lblNewLabel_3);
+		lblXClose.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		lblXClose.setBackground(new Color(255, 255, 255));
+		lblXClose.setHorizontalAlignment(SwingConstants.CENTER);
+		lblXClose.setForeground(new Color(76, 41, 211));
+		lblXClose.setBounds(984, 0, 50, 42);
+		contentPane.add(lblXClose);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(76, 41, 211));
@@ -147,6 +149,8 @@ public class Form extends JFrame {
 		textArea.setFont(new Font("Century Gothic", Font.PLAIN, 13));
 		textArea.setBounds(326, 44, 708, 542);
 		contentPane.add(textArea);
+		
+		
 
 		JButton btnNewButton = new JButton("Enviar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -157,6 +161,7 @@ public class Form extends JFrame {
 
 					btnNewButton.setEnabled(false);
 					textArea.setEditable(false);
+					textArea.append("Carregando arquivos");
 
 					String path = textFieldCaminho.getText();
 					String token = caminhoToken.getText();
@@ -188,7 +193,7 @@ public class Form extends JFrame {
 					}
 
 					for (String s : prospectos) {
-						System.out.println(s);
+						textArea.append(s + "\n");
 					}
 
 					System.out.println(
@@ -214,14 +219,15 @@ public class Form extends JFrame {
 							System.out.println(response.headers());
 							System.out.println(response.version());
 							textArea.append(
-									"_____________________________________________________________________________________________________________"
-											+ "\n");
+									"________________________________________________ CADASTRO FINALIZADO________________________________________" + "\n");
+							
 							System.out.println(
 									"____________________________________________________________________________________________________________");
 
 						} catch (IOException | InterruptedException e1) {
 							e1.printStackTrace();
 						}
+						
 					}
 
 					textArea.append(
@@ -253,6 +259,17 @@ public class Form extends JFrame {
 		procurar.setFont(new Font("Century Gothic", Font.BOLD, 13));
 		procurar.setBounds(227, 130, 89, 23);
 		panel.add(procurar);
+		
+		JLabel lblMinimize = new JLabel("New label");
+		lblMinimize.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				setExtendedState(JFrame.ICONIFIED);
+				}
+		});
+		lblMinimize.setIcon(new ImageIcon(Form.class.getResource("/imagens/icons8-minimize-50.png")));
+		lblMinimize.setBounds(917, 0, 57, 53);
+		contentPane.add(lblMinimize);
 
 	}
 }
