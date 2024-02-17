@@ -47,10 +47,6 @@ public class Form extends JFrame {
 	private JTextField caminhoToken;
 	private JTextField textFieldEndereco;
 
-	/**
-	 * Launch the application.
-	 */
-
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -67,9 +63,6 @@ public class Form extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Form() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
