@@ -164,6 +164,8 @@ public class Form extends JFrame {
 
 					List<Prospecto> list = new ArrayList<>();
 
+					// Adicionar threads para imprimir informações e outra para fazer as requisições;
+					
 					try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
 						String line = br.readLine();
