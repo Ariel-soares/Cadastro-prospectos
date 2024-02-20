@@ -203,6 +203,8 @@ public class Form extends JFrame {
 						HttpClient httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(3))
 								.followRedirects(Redirect.NORMAL).build();
 
+						// Adicionar threads para imprimir informações e outra para fazer as requisições;
+						
 						HttpResponse<String> response;
 						try {
 							response = httpClient.send(request, BodyHandlers.ofString());
