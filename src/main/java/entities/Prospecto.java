@@ -15,7 +15,8 @@ public class Prospecto implements Serializable{
 	private String bairro;
 	private String endereco;
 	private String numero;
-	
+
+	//Composição com serviço
 	private Servico servico;
 	
 
