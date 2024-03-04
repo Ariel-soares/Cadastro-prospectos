@@ -5,7 +5,8 @@ import java.io.Serializable;
 public class Prospecto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
+	//Mapeamento de atributos
 	private String nome_razaosocial;
 	private String email;
 	private String telefone;
